@@ -40,11 +40,13 @@ public:
 	void emulateCycle();
 
 private:
-	// memory and registers
+	// memory (4k)
 	unsigned char memory[4096];
+
+	// REgisters (15 and carry)
 	unsigned char V[16];
 
-	// display 
+	// display  (2048 pixels)
 	unsigned char screen[64 * 32];
 
 	// keypad (HEX based 0x0 - 0xF)
@@ -58,8 +60,12 @@ private:
 	unsigned char delay_timer;
 	unsigned char sound_timer;
 
+	// Index register
 	unsigned short I;
+
+	// program counter
 	unsigned short pc;
+
 	unsigned short opcode;
 
 };
