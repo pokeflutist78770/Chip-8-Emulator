@@ -34,7 +34,7 @@
 		Sound Timer: timer used for sound effects. When its value is non zero,
 					 a beeping sound is made.
 */
-public class Chip8 {
+class Chip8 {
 public:
 	void initialize();
 	void emulateCycle();
