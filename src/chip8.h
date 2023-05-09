@@ -1,3 +1,13 @@
+#pragma once
+
+#include <cstdint>
+
+const int MEMORY_SIZE = 4096;
+const int SCREEN_WIDTH = 64;
+const int SCREEN_HEIGHT = 32;
+const int KEYPAD_SIZE = 16;
+const int REGISTER_SIZE = 16;
+const int STACK_DEPTH = 16;
 
 /**
 	Handles all CHIP-8 logic.
@@ -7,6 +17,7 @@
 	--------------------------------------------------------------------------------
 	Chip-8 has 8-bit 4096 memory locations allocated as such:
 		0x000 - 0x200 : CHIP-8 interpreter itself, font set in emu    (512 bytes)
+		0x200 - 0xE9F : Program memory starts at 0x200
 		0xEA0 - 0xEFF : Call stack, internal use, and other variables ( 96 bytes)
 		0xF00 - 0xFFF : Display Refresh                               (256 bytes)
 
@@ -37,35 +48,39 @@
 class Chip8 {
 public:
 	void initialize();
+	void loadRom(char *fileName);
 	void emulateCycle();
 
-private:
-	// memory (4k)
-	unsigned char memory[4096];
-
-	// REgisters (15 and carry)
-	unsigned char V[16];
+	// keypad (HEX based 0x0 - 0xF)
+	uint8_t keypad[KEYPAD_SIZE];
 
 	// display  (2048 pixels)
-	unsigned char screen[64 * 32];
+	uint8_t screen[SCREEN_WIDTH * SCREEN_HEIGHT];
 
-	// keypad (HEX based 0x0 - 0xF)
-	unsigned char key[16];
+private:
+	// starting address for loading program
+	const unsigned int START_ADDRESS = 0x200;
+
+	// memory (4k)
+	uint8_t memory[MEMORY_SIZE];
+
+	// Registers (15 and carry)
+	uint8_t V[REGISTER_SIZE];
 
 	// stack
-	unsigned short stack[16];
-	unsigned short stack_ptr;
+	uint16_t stack[STACK_DEPTH];
+	uint16_t stackPtr;
 
 	// timers
-	unsigned char delay_timer;
-	unsigned char sound_timer;
+	uint8_t delayTimer;
+	uint8_t soundTimer;
 
-	// Index register
-	unsigned short I;
+	// Index register : stores memory address for operations
+	uint16_t indexRegister;
 
 	// program counter
-	unsigned short pc;
+	uint16_t pc;
 
-	unsigned short opcode;
+	uint16_t opcode;
 
 };
