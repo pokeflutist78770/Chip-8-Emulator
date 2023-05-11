@@ -69,8 +69,8 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)libs\SDL2-2.26.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)libs\SDL2-2.26.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\aagua\Documents\SDL2-2.26.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\aagua\Documents\SDL2-2.26.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
