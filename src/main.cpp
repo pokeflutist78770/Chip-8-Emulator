@@ -18,6 +18,7 @@ int main(int argc, char **argv) {
 
 	while (!quit) {
 		quit = system.processInput(chip8.keypad);
+		system.update();
 	}
 
 	chip8.initialize();

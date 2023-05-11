@@ -11,5 +11,6 @@ public:
 
 private:
 	SDL_Window* window{};
-	SDL_Surface* surface{};
+	SDL_Renderer* renderer{};
+	SDL_Texture* texture{};
 };
